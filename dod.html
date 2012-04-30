@@ -1,29 +1,3 @@
-<head>
-  <title>Definition of Done</title>
-</head>
-
-<body>
-  <div class="container">  
-
-	<div class="hero-unit">
-		<h1>Definition of Done</h1>
-		<p>Well, it's written using Meteor, Coffeescript and Twitter Bootstrap. More questions?</p>
-  	</div>
-
-	{{>application}}
-
-  </div>
-</body>
-
-<template name="application">
-	{{#if show_dod}}
-		{{>dod}}
-	{{/if}}
-	{{#unless show_dod}}
-		{{>list}}
-	{{/unless}}
-</template>
-
 <template name="list">
 	<table class="table">
 		<thead>

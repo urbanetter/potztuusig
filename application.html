@@ -1,0 +1,25 @@
+<head>
+  <title>Potz Tuusig!</title>
+</head>
+
+<body>
+  <div class="container">  
+
+	<div class="hero-unit">
+		<h1>Potz Tuusig!</h1>
+		<p>Your DoD Manager</p>
+  	</div>
+
+	{{>application}}
+
+  </div>
+</body>
+
+<template name="application">
+	{{#if show_dod}}
+		{{>dod}}
+	{{/if}}
+	{{#unless show_dod}}
+		{{>list}}
+	{{/unless}}
+</template>
