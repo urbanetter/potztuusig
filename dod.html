@@ -1,0 +1,73 @@
+<head>
+  <title>Definition of Done</title>
+</head>
+
+<body>
+  <div class="container">  
+
+	<div class="hero-unit">
+		<h1>Definition of Done</h1>
+		<p>Well, it's written using Meteor, Coffeescript and Twitter Bootstrap. More questions?</p>
+  	</div>
+
+	{{>application}}
+
+  </div>
+</body>
+
+<template name="application">
+	{{#if show_dod}}
+		{{>dod}}
+	{{/if}}
+	{{#unless show_dod}}
+		{{>list}}
+	{{/unless}}
+</template>
+
+<template name="list">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>User Story</th>
+				<th>JIRA Ticket</th>
+				<th>Which DoD</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each dods}}
+				{{>list_row}}
+			{{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="list_row">
+	<tr>
+		<td>{{userstory}}</td>
+		<td>{{jira}}</td>
+		<td>{{set}}</td>
+	</tr>
+</template>
+
+<template name="dod">
+	<div class="page-header">
+		<h1>
+			{{title}}
+		</h1>
+	</div>
+	{{#each answers}}
+		{{>answer}}
+	{{/each}}
+	<button class="btn back">Back</button>
+</template>
+
+<template name="answer">
+	<div class="well">
+		<h3>{{question}}</h3>
+		<div class="btn-group" data-toggle="buttons-radio">
+			<button class="answer btn btn-success {{active_class "yes"}}" name="yes">Yes</button>
+			<button class="answer btn btn-danger {{active_class "no"}}" name="no">No</button>
+			<button class="answer btn btn-warning {{active_class "na"}}" name="na">N/A</button>
+		</div>
+	</div>
+</template>
