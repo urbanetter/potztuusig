@@ -1,0 +1,94 @@
+<template name="questions">
+	<div class="page-title">
+		<h1>Choose the question set</h1>
+	</div>
+	<button class="btn new">New Question Set</button>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Question count</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each sets}}
+				{{>questions_row}}
+			{{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="questions_row">
+	<tr>
+		<td>{{title}}</td>
+		<td>{{count}}</td>
+		<td>
+			<button class="btn view">View</button>
+			<button class="btn edit">Edit</button>
+			<button class="btn delete">Delete</button>
+		</td>
+	</tr>
+</template>
+
+<template name="set_edit">
+	<div class="control-group">
+		<label for="title">Title:</label>
+		<input type="text" id="title" value="{{title}}" />
+		
+		<label for="description">Description:</label>
+		<textarea id="description">{{description}}</textarea>
+	</div>
+	<div class="form-actions">
+		<button class="btn btn-primary save">Save</button>
+	</div>
+</template>
+
+<template name="set">
+	<div class="page-title">
+		<h1>{{title}}</h1>
+	</div>
+	<p>{{description}}</p>
+	<button class="btn new">New Question</button>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Question</th>
+				<th>Type</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each questions}}
+				{{>set_row}}
+			{{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="set_row">
+	<tr>
+		<td>{{question}}</td>
+		<td>{{type}}</td>
+		<td>
+			<button class="btn edit">Edit</button>
+			<button class="btn delete">Delete</button>
+		</td>
+	</tr>
+</template>
+
+<template name="question_edit">
+	<div class="control-group">
+		<label for="question">Question:</label>
+		<input type="text" id="question" value="{{question}}" />
+		
+		<label for="type">Type:</label>
+		<select id="type">
+			<option value="string" {{selected "string"}}>String</option>
+			<option value="ynna" {{selected "ynna"}}>Yes/ No/ NA</option>
+		</select>
+	</div>
+	<div class="form-actions">
+		<button class="btn btn-primary save">Save</button>
+	</div>
+</template>

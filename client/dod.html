@@ -1,0 +1,88 @@
+<template name="dods">
+	<button class="btn new">New DoD</button>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>JIRA Ticket</th>
+				<th>Which DoD</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each dods}}
+				{{>dods_row}}
+			{{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="dods_row">
+	<tr>
+		<td>{{title}}</td>
+		<td>{{jira}}</td>
+		<td>{{set}}</td>
+		<td>
+			<button class="btn view">View</button>
+			<button class="btn edit">Edit</button>
+			<button class="btn delete">Delete</button>
+		</td>
+	</tr>
+</template>
+
+<template name="dod">
+	<div class="page-header">
+		<h1>
+			{{title}}
+		</h1>
+	</div>
+	<p>JIRA ticket: {{jira}}</p>
+	{{#each answers}}
+		{{>answer}}
+	{{/each}}
+	<div class="form-actions">
+		<button class="btn back">Back</button>
+	</div>
+</template>
+
+<template name="dod_edit">
+	<div class="control-group">
+		<label for="title">Title:</label>
+		<input type="text" id="title" value="{{title}}" />
+		
+		<label for="jira">JIRA Ticket:</label>
+		<input type="text" id="jira" value="{{jira}}" />
+		
+		{{#if is_new}}
+		<label for="set">Question Set:</label>
+		<select id="set">
+			{{#each sets}}
+				{{>set_option}}
+			{{/each}}
+		</select>
+		{{/if}}
+	</div>
+	<div class="form-actions">
+		<button class="btn btn-primary save">Save</button>
+	</div>
+</template>
+
+<template name="set_option">
+	<option value="{{_id}}">{{title}}</option>
+</template>	
+	
+<template name="answer">
+	<div>
+		<h3>{{question}}</h3>
+		{{#if type "string"}}
+			<input type="text" value="{{answer}}" name="question_{{_id}}" />
+		{{/if}}
+		{{#if type "ynna"}}
+		<div class="btn-group" data-toggle="buttons-radio">
+			<button class="answer btn btn-success {{active_class "yes"}}" name="yes">Yes</button>
+			<button class="answer btn btn-danger {{active_class "no"}}" name="no">No</button>
+			<button class="answer btn btn-warning {{active_class "na"}}" name="na">N/A</button>
+		</div>
+		{{/if}}
+	</div>
+</template>

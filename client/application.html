@@ -1,0 +1,47 @@
+<head>
+  <title>Potz Tuusig!</title>
+</head>
+
+<body>
+  <div class="container">  
+	{{>application}}
+  </div>
+</body>
+
+<template name="application">
+    <div class="navbar">
+    	<div class="navbar-inner">
+    		<div class="container">
+    			<ul class="nav">
+					<li class="{{mode_active "dods"}}">
+						<a href="#" data-mode="dods">DoDs</a>
+					</li>
+					<li class="{{mode_active "questions"}}">
+						<a href="#" data-mode="questions">Questions</a>
+					</li>
+				</ul>
+    		</div>
+    	</div>
+    </div>
+	{{#if mode "dods"}}
+		{{>dods}}
+	{{/if}}
+	{{#if mode "dod"}}
+		{{>dod}}
+	{{/if}}
+	{{#if mode "dod_edit"}}
+		{{>dod_edit}}
+	{{/if}}
+	{{#if mode "questions"}}
+		{{>questions}}
+	{{/if}}
+	{{#if mode "set"}}
+		{{>set}}
+	{{/if}}
+	{{#if mode "set_edit"}}
+		{{>set_edit}}
+	{{/if}}
+	{{#if mode "question_edit"}}
+		{{>question_edit}}
+	{{/if}}
+</template>
