@@ -55,7 +55,7 @@ Template.dod_edit.events =
 		else
 			# update dod
 			dods.update @_id,
-				$set
+				$set:
 					title: record.title
 					jira: record.jira
 		Session.set "mode", "dod"
